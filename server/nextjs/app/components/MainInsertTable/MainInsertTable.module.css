@@ -1,0 +1,15 @@
+.recent-info-table {
+    border-collapse: collapse;
+}
+
+.recent-info-table > th,
+td {
+    border: 1px solid black;
+}
+
+.table-problem-box {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

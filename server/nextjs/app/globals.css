@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(4, 3, 15);
+}
+
+/* html {
+    background-color: rgb(25, 24, 39);
+    background-color: #111;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(17, 17, 17, 1) 30%
+    );
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+} */
+
+.page-wrapper {
+    height: 2500px;
+    width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.up-wrapper {
+    display: flex;
+    height: 30%;
+}
+
+.down-wrapper {
+    display: flex;
+    height: 50%;
+}
+
+.left-wrapper,
+.right-wrapper {
+    margin-top: 80px;
+    padding: 15px;
+    display: flex;
+}
+
+.left-wrapper {
+    width: 70%;
+    background-color: rgb(57, 52, 78);
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-wrapper {
+    border-radius: 15px;
+    padding: 20px;
+    height: 500px;
+    background-color: rgb(228, 228, 228);
+}
+
+.service-button {
+    margin-top: 30px;
+    width: 300px;
+    height: 30px;
+}
+
+.right-wrapper {
+    width: 30%;
+}
+
+.recentInfo-wrapper {
+    height: 750px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
