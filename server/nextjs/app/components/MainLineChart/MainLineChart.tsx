@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { IChartData, ILineChartProps } from '@/services/ILineChart';
+import { IChartData, ILineChartProps } from '@/interfaces/ILineChart';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -13,11 +13,11 @@ import {
     Tooltip,
     Legend,
     registerables,
-    ChartData,
     TooltipItem,
 } from 'chart.js';
 
 import 'chartjs-adapter-date-fns';
+import { transformDataForChart } from '@/utils/transformDataforChart';
 
 ChartJS.register(
     CategoryScale,
@@ -29,37 +29,6 @@ ChartJS.register(
     Legend,
     ...registerables
 );
-
-const transformDataForChart = (problems: IChartData[]): ChartData<'line'> => {
-    problems.sort((a, b) => {
-        return (
-            new Date(a.solved_at).getTime() - new Date(b.solved_at).getTime()
-        );
-    });
-
-    let cumulativeDifficulty = 20;
-    const chartData = {
-        labels: [] as Date[],
-        datasets: [
-            {
-                label: 'Cumulative Difficulty',
-                data: [] as number[],
-                borderColor: 'rgb(253, 26, 132)',
-                fill: false,
-                borderWidth: 3,
-                pointRadius: 2,
-            },
-        ],
-    };
-
-    problems.forEach((problem) => {
-        cumulativeDifficulty += problem.problem_level;
-        chartData.labels.push(new Date(problem.solved_at)); // x축에 날짜 추가
-        chartData.datasets[0].data.push(cumulativeDifficulty); // y축에 누적 난이도 추가
-    });
-
-    return chartData;
-};
 
 export default function MainLineChart({ userName, amount }: ILineChartProps) {
     const [chartData, setChartData] = useState<IChartData[]>([]);

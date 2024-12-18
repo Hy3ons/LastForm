@@ -3,7 +3,7 @@ import {
     IGetRecentRecordsFormat,
 } from '@/interfaces/IdbService';
 import { createClient } from '@supabase/supabase-js';
-import { IChartData } from './ILineChart';
+import { IChartData } from '../interfaces/ILineChart';
 
 const supabaseUrl = process.env.SUPABASE_URL as string;
 const supabaseKey = process.env.SUPABASE_KEY as string;
@@ -42,7 +42,7 @@ export async function insertSolvingInfo({
         const duplicated = await checkDuplicate(userName, problemId);
 
         if (duplicated) {
-            return 'Information is already stored';
+            return 'Already Stored';
         }
 
         const { error } = await supabase.from(tableName).insert([
@@ -56,7 +56,7 @@ export async function insertSolvingInfo({
 
         if (error) throw new Error(error.message || 'Unknown error occurred');
 
-        return 'Solving info inserted successfully';
+        return 'Successfully Stored';
     } catch (error: unknown) {
         if (error instanceof Error) {
             return `Error: ${error.message}`;

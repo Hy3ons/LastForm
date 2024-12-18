@@ -3,7 +3,7 @@
 import { IGetRecentRecordsFormat } from '@/interfaces/IdbService';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import styles from './MainInsertTable.module.css';
+import './MainInsertTable.css';
 
 export default function MainInsertTable() {
     const [recentLogs, setRecentLogs] = useState<IGetRecentRecordsFormat[]>([]);
@@ -38,27 +38,18 @@ export default function MainInsertTable() {
             <tbody>
                 {recentLogs.map((log: IGetRecentRecordsFormat, idx: number) => (
                     <tr key={`${log.user_name}_${idx}`}>
-                        <td>{log.user_name}</td>
+                        <td className="table-name-box">{log.user_name}</td>
                         <td className="table-problem-box">
                             <Image
-                                src={`lv_${log.problem_level}.svg`}
+                                src={`/tier/lv_${log.problem_level}.svg`}
                                 alt={`lv_${log.problem_level}`}
                                 width={18}
                                 height={18}
                             />
                             {`${log.problem_id}`}
                         </td>
-                        <td>
-                            {new Date(log.solved_at)
-                                .toLocaleString('en-GB', {
-                                    year: 'numeric',
-                                    month: '2-digit',
-                                    day: '2-digit',
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                    second: '2-digit',
-                                })
-                                .replace(/[\//, ]/g, '-')}
+                        <td className="table-date-box">
+                            {new Date(log.solved_at).toLocaleString()}
                         </td>
                     </tr>
                 ))}

@@ -24,6 +24,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko">
+            <head>
+                <link rel="icon" href="/graph_icon.png"></link>
+            </head>
+
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >

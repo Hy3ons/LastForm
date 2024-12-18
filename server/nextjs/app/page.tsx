@@ -1,6 +1,7 @@
 import MainInsertTable from './components/MainInsertTable/MainInsertTable';
 import MainLineChart from './components/MainLineChart/MainLineChart';
 import GetStart from './components/GetStart/GetStart';
+import SvgTest from './components/SvgTest/SvgTest';
 
 export default function Home() {
     return (
@@ -18,6 +19,10 @@ export default function Home() {
                         <button className="service-button">
                             Service Check Button
                         </button>
+
+                        <div>
+                            <SvgTest username="hhs2003" limit={30} />
+                        </div>
                     </div>
                     <div className="right-wrapper">
                         <div className="recentInfo-wrapper">

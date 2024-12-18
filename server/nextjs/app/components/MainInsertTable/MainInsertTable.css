@@ -1,0 +1,30 @@
+.recent-info-table {
+    border-collapse: collapse;
+}
+
+.recent-info-table > th,
+td {
+    /* border: 1px solid black; */
+}
+
+.table-name-box {
+    width: 80px;
+    color: blue;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.table-problem-box {
+    height: 40px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-date-box {
+    font-size: 9px;
+    text-align: center;
+    vertical-align: center;
+}
