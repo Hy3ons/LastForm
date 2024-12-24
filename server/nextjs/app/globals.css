@@ -48,6 +48,8 @@ body {
     margin-top: 80px;
     padding: 15px;
     display: flex;
+
+    border-radius: 30px;
 }
 
 .left-wrapper {
@@ -61,7 +63,9 @@ body {
     border-radius: 15px;
     padding: 20px;
     height: 500px;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(255, 255, 255);
+
+    border: 3px solid rgb(150, 150, 150);
 }
 
 .service-button {
@@ -80,7 +84,8 @@ body {
     padding: 15px;
 
     border-radius: 15px;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(150, 150, 150);
 
     display: flex;
     justify-content: center;

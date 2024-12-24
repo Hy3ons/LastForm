@@ -1,5 +1,6 @@
 'use client';
 
+import './MainLineChart.css';
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { IChartData, ILineChartProps } from '@/interfaces/ILineChart';
@@ -32,18 +33,19 @@ ChartJS.register(
 
 export default function MainLineChart({ userName, amount }: ILineChartProps) {
     const [chartData, setChartData] = useState<IChartData[]>([]);
+    const [user, setUserName] = useState<string>(userName);
 
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch(
-                `/api/recent-problems?username=${userName}&limit=${amount}`
+                `/api/recent-problems?username=${user}&limit=${amount}`
             );
             const data = await res.json();
             setChartData(data.data);
         };
 
-        fetchData();
-    }, []);
+        if (user) fetchData();
+    }, [user, amount]);
 
     const data = transformDataForChart(chartData);
 
@@ -83,9 +85,35 @@ export default function MainLineChart({ userName, amount }: ILineChartProps) {
         },
     };
 
+    const [isFocused, setIsFocused] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        if (/^[a-zA-Z0-9\s]*$/.test(newValue)) {
+            setInputValue(newValue);
+            setUserName(newValue);
+        }
+    };
+
     return (
-        <div>
-            <h2>{userName} Solving Graph</h2>
+        <div className="mainchart-wrapper">
+            <div className="title-wrapper">
+                <div>
+                    <h2>{user} Recent Problem-Solving Trends</h2>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="이름을 입력하세요"
+                        className={`input ${isFocused ? 'focused' : ''} ${inputValue ? 'hasValue' : ''}`}
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={() => setIsFocused(false)}
+                        onChange={handleInputChange}
+                        value={inputValue}
+                    />
+                </div>
+            </div>
             {data ? <Line data={data} options={options} /> : <></>}
         </div>
     );

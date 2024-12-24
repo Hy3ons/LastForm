@@ -2,7 +2,7 @@ import { insertSolvingInfo } from '@/services/dbService';
 import { getProblemLevel } from '../../../services/problemService';
 
 export const dynamic = 'force-dynamic';
-export async function OPTIONS(request: Request) {
+export async function OPTIONS() {
     const response = new Response(null, { status: 204 });
 
     response.headers.set('Access-Control-Allow-Origin', '*');

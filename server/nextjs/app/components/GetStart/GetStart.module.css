@@ -7,10 +7,13 @@
 
     align-items: center;
     justify-content: space-between;
+
+    position: relative;
 }
 
 .text-wrapper {
     display: flex;
+    z-index: 1;
 
     flex-direction: column;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
@@ -29,6 +32,44 @@
 }
 
 .picture {
-    height: 100%;
-    width: 20%;
+    position: absolute;
+    height: 80%;
+    width: 50%;
+
+    right: 0%;
+}
+
+.picture > * {
+    position: absolute;
+
+    transform: rotateX(-15deg) rotateY(-40deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.picture > *:hover {
+    transform: rotateX(-15deg) rotateY(-40deg) scale(1.2);
+}
+
+.image13 {
+    width: 300px;
+    height: 300px;
+    right: 0%;
+}
+
+.image11 {
+    width: 80px;
+    height: 80px;
+    left: 10%;
+}
+
+.image17 {
+    width: 300px;
+    height: 300px;
+
+    right: 20%;
+    bottom: 0%;
+}
+
+.mini {
+    /* opacity: 0; */
 }
